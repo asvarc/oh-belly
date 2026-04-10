@@ -16,7 +16,7 @@ export default function UnicornBackground() {
         return;
       }
 
-      w.UnicornStudio = { isInitialized: false };
+      w.UnicornStudio = { isInitialized: false, init: () => {} };
       const script = document.createElement("script");
       script.src =
         "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.6/dist/unicornStudio.umd.js";
