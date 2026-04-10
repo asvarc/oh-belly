@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
+/* ———— Oh Belly — Minimal Soft Pop ———— */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #FDFAF5;
+  --ink: #111111;
+  --ink-50: #11111180;
+  --ink-20: #11111133;
+  --ink-08: #11111114;
+  --coral: #FF6B4A;
+  --coral-soft: #FF6B4A18;
+  --mint: #3ECFA0;
+  --mint-soft: #3ECFA018;
+  --violet: #A37BFF;
+  --violet-soft: #A37BFF18;
+  --lemon: #F5C842;
+  --lemon-soft: #F5C84218;
+  --rose: #FF6B98;
+  --rose-soft: #FF6B9818;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar — nearly invisible */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--ink-20); border-radius: 2px; }
+
+/* Display font utility */
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+/* Accent text color */
+.text-accent {
+  color: var(--coral);
+}
+
+/* Hide UnicornStudio watermark */
+a[href*="unicorn.studio"] {
+  display: none !important;
+}
+
+/* Soft divider */
+.divider {
+  height: 1px;
+  background: var(--ink-08);
+  border: none;
+}
+
+/* Subtle grain overlay */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Smooth entrance keyframes */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Can float — gentle */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
